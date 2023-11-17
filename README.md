@@ -40,6 +40,9 @@ This is not a real project. Just a quick exercise to show some skills.
 
 ## API Endpoints
 
+To test the api endpoints there is a file called demo-soap.postman_collection.json available here. It can be imported to postman and all endpoints can be tested.
+
+
 - Get available plates - returns a list of registrattion plates not registered at the moment
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://example.com/car-registration">
