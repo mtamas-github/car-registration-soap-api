@@ -1,0 +1,119 @@
+<definitions
+        name="CarRegistrationService"
+        targetNamespace="http://tmarin.co.uk/car-registration"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://tmarin.co.uk/car-registration"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+>
+    <types>
+        <xsd:schema targetNamespace="http://tmarin.co.uk/car-registration">
+            <xsd:element name="getAvailablePlates" type="tns:getAvailablePlates"/>
+            <xsd:element name="getRegistrationDetails" type="tns:getRegistrationDetails"/>
+            <xsd:element name="renewRegistration" type="tns:renewRegistration"/>
+
+            <xsd:complexType name="getAvailablePlates">
+                <xsd:sequence/>
+            </xsd:complexType>
+
+            <xsd:complexType name="getRegistrationDetails">
+                <xsd:sequence>
+                    <xsd:element name="plateNumber" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="renewRegistration">
+                <xsd:sequence>
+                    <xsd:element name="plateNumber" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <!-- Define other types as needed -->
+
+        </xsd:schema>
+    </types>
+
+    <message name="getAvailablePlatesRequest"/>
+    <message name="getAvailablePlatesResponse">
+        <part name="plateNumbers" type="xsd:string"/>
+    </message>
+
+    <message name="getRegistrationDetailsRequest">
+        <part name="plateNumber" type="xsd:string"/>
+    </message>
+    <message name="getRegistrationDetailsResponse">
+        <part name="owner" type="xsd:string"/>
+        <part name="expires" type="xsd:string"/>
+    </message>
+
+    <message name="renewRegistrationRequest">
+        <part name="plateNumber" type="xsd:string"/>
+    </message>
+    <message name="renewRegistrationResponse">
+        <part name="success" type="xsd:boolean"/>
+        <part name="newExpiration" type="xsd:string"/>
+    </message>
+
+    <portType name="CarRegistrationPortType">
+        <operation name="getAvailablePlates">
+            <input message="tns:getAvailablePlatesRequest"/>
+            <output message="tns:getAvailablePlatesResponse"/>
+        </operation>
+
+        <operation name="getRegistrationDetails">
+            <input message="tns:getRegistrationDetailsRequest"/>
+            <output message="tns:getRegistrationDetailsResponse"/>
+        </operation>
+
+        <operation name="renewRegistration">
+            <input message="tns:renewRegistrationRequest"/>
+            <output message="tns:renewRegistrationResponse"/>
+        </operation>
+
+        <!-- Define other operations as needed -->
+
+    </portType>
+
+    <binding name="CarRegistrationBinding" type="tns:CarRegistrationPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getAvailablePlates">
+            <soap:operation soapAction="getAvailablePlates"/>
+            <input>
+                <soap:body use="encoded" namespace="http://tmarin.co.uk/car-registration" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://tmarin.co.uk/car-registration" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+        <operation name="getRegistrationDetails">
+            <soap:operation soapAction="getRegistrationDetails"/>
+            <input>
+                <soap:body use="encoded" namespace="http://tmarin.co.uk/car-registration" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://tmarin.co.uk/car-registration" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+        <operation name="renewRegistration">
+            <soap:operation soapAction="renewRegistration"/>
+            <input>
+                <soap:body use="encoded" namespace="http://tmarin.co.uk/car-registration" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://tmarin.co.uk/car-registration" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+
+        <!-- Define other operations as needed -->
+
+    </binding>
+
+    <service name="CarRegistrationService">
+        <port name="CarRegistrationPort" binding="tns:CarRegistrationBinding">
+            <soap:address location="http://localhost:3000/carRegistration"/>
+        </port>
+    </service>
+
+</definitions>

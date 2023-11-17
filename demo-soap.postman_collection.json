@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "4bb0aeb6-1cad-4b96-a4e8-3c5c6f21e5b1",
+		"name": "demo-soap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "3364833"
+	},
+	"item": [
+		{
+			"name": "getAvailablePlates",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://example.com/car-registration\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <web:getAvailablePlates/>\n    </soapenv:Body>\n</soapenv:Envelope> ",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/carRegistration?wsdl",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carRegistration"
+					],
+					"query": [
+						{
+							"key": "wsdl",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRegistrationDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://example.com/car-registration\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <web:getRegistrationDetails>\n            <web:plateNumber>ABC123</web:plateNumber>\n        </web:getRegistrationDetails>\n    </soapenv:Body>\n</soapenv:Envelope> ",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/carRegistration?wsdl",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carRegistration"
+					],
+					"query": [
+						{
+							"key": "wsdl",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegistrationRenewal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://example.com/car-registration\">\n    <soapenv:Header/>\n    <soapenv:Body>\n        <web:renewRegistration>\n            <web:plateNumber>ABC123</web:plateNumber>\n        </web:renewRegistration>\n    </soapenv:Body>\n</soapenv:Envelope> ",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/carRegistration?wsdl",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carRegistration"
+					],
+					"query": [
+						{
+							"key": "wsdl",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
